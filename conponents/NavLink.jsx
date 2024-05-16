@@ -7,7 +7,7 @@ const NavLink = ({ href, children }) => {
    const path = usePathname()
 
    return (
-      <Link href={href} style={{ color: path === href ? 'black' : 'white' }}>
+      <Link href={href} style={{ color: path === href ? 'black' : 'blue' }}>
          {children}
       </Link>
    )
