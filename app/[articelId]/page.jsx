@@ -1,8 +1,6 @@
-import Image from "next/image"
-import Link from "next/link"
+import React from 'react'
 
-export default function Home() {
-
+export default function Article({ params }) {
   const articles = [
     {
       "id": "1",
@@ -86,29 +84,39 @@ export default function Home() {
       ]
     }
   ]
-
-
+  const article = articles.find(article => article.id == params.articelId)
+  console.log({params})
   return (
-    <div className="bg-gray-100 py-8">
-      <div className="max-w-5xl mx-auto">
-        {articles.map((article) => (
-          <div dir="auto" key={article.id} className="bg-white rounded-lg overflow-hidden shadow-md mb-8">
-            <img src={article.image} alt="article" className="w-full h-64 object-cover object-center" />
-            <div className="p-6">
-              <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
-              <p className="text-gray-600 mb-4">{article.subtitle} / {article.editor}</p>
-              <p className="text-gray-400 mb-4">{new Date(article.date).toDateString()}</p>
-              <p className="text-gray-800 mb-4">{article.quote}</p>
-              <div className="flex flex-wrap gap-2">
-                {article.tags.map((tag, index) => (
-                  <span key={index} className="bg-gray-200 py-1 px-2 rounded-md text-sm text-gray-600 cursor-pointer hover:bg-primary-100">{tag}</span>
+    <div>
+      {article ? (
+        <div dir="auto" className="container mx-auto px-4">
+          <article>
+            <header>
+              <h1 className="text-2xl font-bold text-gray-800">{article.title}</h1>
+              <p className="text-lg text-gray-600">{article.subtitle}</p>
+              <img src={article.image} alt={article.title} />
+              <p>{article.quote}</p>
+              <p>כתב/ה {article.editor} בתאריך {new Date(article.date).toLocaleDateString()}</p>
+            </header>
+            <div dangerouslySetInnerHTML={{ __html: article.content }} />
+            <footer>
+              <ul className="flex flex-wrap">
+                {article.tags.map(tag => (
+                  <li key={tag} className="mr-2 mb-2 px-2 py-1 bg-gray-200 rounded-full">{tag}</li>
                 ))}
-              </div>
-              <Link href={article.id} className="text-blue-500 mt-4 block">קרא עוד <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block -mt-1 ml-1" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.707 4.293a1 1 0 0 1 1.414 1.414L4.414 10l2.707 2.293a1 1 0 1 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414l3-3zm8 0a1 1 0 0 1 1.414 1.414L12.414 10l2.293 2.293a1 1 0 1 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414l3-3z" clipRule="evenodd" /></svg></Link>
-            </div>
-          </div>
-        ))}
-      </div>
+              </ul>
+              {article.comments.map(comment => (
+                <div key={comment.date} className="border-t border-gray-300 pt-4 mt-4">
+                  <p><strong>{comment.author}</strong> - {new Date(comment.date).toLocaleString()}</p>
+                  <p>{comment.content}</p>
+                </div>
+              ))}
+            </footer>
+          </article>
+        </div>
+      ) : (
+        <p>Article not found</p>
+      )}
     </div>
-  )
+  );
 }
