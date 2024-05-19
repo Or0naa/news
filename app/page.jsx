@@ -1,6 +1,6 @@
 'use server'
-import { connectToMongo } from "@/DL/connectToMongo";
-import { getAllArticles } from "@/BL/article.service";
+import { connectToMongo } from "@/server/DL/connectToMongo";
+import { getAllArticles } from "@/server/BL/article.service";
 import Link from "next/link";
 
 export default async function Home() {
