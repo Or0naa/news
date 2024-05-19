@@ -54,4 +54,5 @@ const ArticleSchema = new mongoose.Schema({
   }
 });
 
-export const ArticleModel = mongoose.models.Article || mongoose.model('Article', ArticleSchema);
+export const ArticleModel = mongoose.models?.Article || mongoose.model('Article', ArticleSchema);
+

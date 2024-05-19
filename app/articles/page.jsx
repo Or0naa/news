@@ -7,7 +7,6 @@ export default async function AllArticles() {
   await connectToMongo()
 
 const articles = await getAllArticles()
-
   return (
     <div className="bg-theme-bg py-8">
       <div className="max-w-5xl flex gap-4 mx-auto">

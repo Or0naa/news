@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 const NavLink = ({ href, children }) => {
    const path = usePathname()
-   console.log("hi",theme.extend.colors.theme)
+
    return (
       <Link href={href} className={`${path===href? "text-theme-light":"text-theme-dark"}`}>
          {children}
