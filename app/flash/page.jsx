@@ -1,9 +1,10 @@
+import { connectToMongo } from '@/server/DL/connectToMongo'
 import React from 'react'
 import { getAllFlashes } from '@/server/BL/flash.service'
 import { connectToMongo } from '@/server/DL/connectToMongo'
 
-export default function AllFlash() {
-  connectToMongo()
+export default async function AllFlash() {
+ await connectToMongo()
 const flashes = getAllFlashes()
 
   return (

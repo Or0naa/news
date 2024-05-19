@@ -8,28 +8,27 @@ export default async function Article({ params }) {
   await connectToMongo()
   const article = await getArticleById(params.articleId)
   
-
   return (
     <div>
       {article ? (
-        <div dir="auto" className="container max-w-96 mx-auto px-4">
+        <div dir="auto" className="container max-w-96 mx-auto px-4 mt-16" style={{ backgroundColor: "#FFF5E0" }}>
           <article>
             <header>
-              <h1 className="text-2xl font-bold text-gray-800">{article.title}</h1>
-              <p className="text-lg text-gray-600">{article.subtitle}</p>
+              <h1 className="text-2xl font-bold" style={{ color: "#141E46" }}>{article.title}</h1>
+              <p className="text-lg" style={{ color: "#41B06E" }}>{article.subtitle}</p>
               <img src={article.image} alt={article.title} />
-              <p>{article.quote}</p>
+              <p style={{ color: "#8DECB4" }}>{article.quote}</p>
               <p>כתב/ה {article.editor} בתאריך {new Date(article.date).toLocaleDateString()}</p>
             </header>
             <div dangerouslySetInnerHTML={{ __html: article.content }} />
             <footer>
               <ul className="flex flex-wrap">
                 {article.tags.map(tag => (
-                  <li key={tag} className="mr-2 mb-2 px-2 py-1 bg-gray-200 rounded-full">{tag}</li>
+                  <li key={tag} className="mr-2 mb-2 px-2 py-1 rounded-full" style={{ backgroundColor: "#41B06E", color: "#FFF5E0" }}>{tag}</li>
                 ))}
               </ul>
               {article.comments.map(comment => (
-                <div key={comment.date} className="border-t border-gray-300 pt-4 mt-4">
+                <div key={comment.date} className="border-t pt-4 mt-4" style={{ borderColor: "#41B06E" }}>
                   <p><strong>{comment.author}</strong> - {new Date(comment.date).toLocaleString()}</p>
                   <p>{comment.content}</p>
                 </div>
