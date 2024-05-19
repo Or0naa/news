@@ -4,8 +4,11 @@ import { getArticleById } from '@/BL/article.service';
 
 
 export default async function Article({ params }) {
+
+    console.log("njbhvgh", params.articleId )
   await connectToMongo()
-   const article = await getArticleById(params.articleId)
+  const article = await getArticleById(params.articleId)
+  
 
   return (
     <div>
