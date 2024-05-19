@@ -1,8 +1,9 @@
-import { Poppins } from "next/font/google";
+import { Poppins,Fredoka } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
+const fredoke = Fredoka({ subsets: ["latin"], weight: [ "300", "400", "500", "600", "700"] });
 const inter = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
 export const metadata = {
   title: "news",
@@ -12,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={fredoke.className}>
         <Nav />
         {children}
         <Footer/>

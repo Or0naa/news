@@ -9,11 +9,11 @@ export default async function AllArticles() {
 const articles = await getAllArticles()
 
   return (
-    <div className="bg-gray-100 py-8">
-      <div className="max-w-5xl mx-auto">
+    <div className="bg-theme-bg py-8">
+      <div className="max-w-5xl flex gap-4 mx-auto">
         {articles.map((article) => (
           <div dir="auto" key={article.id} className="bg-white rounded-lg overflow-hidden shadow-md mb-8">
-            <img src={article.image} alt="article" className="w-full h-64 object-cover " />
+            <img src={article.image} alt="article" className="w-full h-64 object-cover" />
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
               <p className="text-gray-600 mb-4">{article.subtitle} / {article.editor}</p>
