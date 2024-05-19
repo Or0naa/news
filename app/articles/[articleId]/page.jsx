@@ -5,7 +5,6 @@ import { getArticleById } from '@/BL/article.service';
 
 export default async function Article({ params }) {
 
-    console.log("njbhvgh", params.articleId )
   await connectToMongo()
   const article = await getArticleById(params.articleId)
   
@@ -13,7 +12,7 @@ export default async function Article({ params }) {
   return (
     <div>
       {article ? (
-        <div dir="auto" className="container mx-auto px-4">
+        <div dir="auto" className="container max-w-96 mx-auto px-4">
           <article>
             <header>
               <h1 className="text-2xl font-bold text-gray-800">{article.title}</h1>

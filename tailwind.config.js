@@ -24,6 +24,12 @@ module.exports = {
         secondary: "#3e08a4",
         accent: "#a40820",
         neutral: "#6ea408",
+        theme: {
+          bg: "#FFF5E0",
+          light: "#8DECB4",
+          dark:"#41B06E",
+          accent: "#141E46",
+        }
       }
     },
 
