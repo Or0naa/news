@@ -8,10 +8,15 @@ const flashes = getAllFlashes()
 
   return (
     <div>
-      {Object.keys(flashes).map(flash => 
-      <div className='text-red-200'>
-        {flash.title}
-        </div>)}
+      {flashes.map((flash) => (
+        <div key={flash.id}>
+          <h1>{flash.title}</h1>
+          <p>{flash.subtitle}</p>
+          <p>{flash.content}</p>
+          <p>{flash.editor}</p>
+          <p>{new Date(flash.date).toDateString()}</p>
+        </div>
+      ))}
     </div>
   )
 }
