@@ -1,6 +1,6 @@
 import React from 'react'
-import { connectToMongo } from '@/DL/connectToMongo';
-import { getArticleById } from '@/BL/article.service';
+import { connectToMongo } from '@/server/DL/connectToMongo';
+import { getArticleById } from '@/server/BL/article.service';
 
 
 export default async function Article({ params }) {
