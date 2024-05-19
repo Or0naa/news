@@ -28,4 +28,4 @@ const FlashSchema = new mongoose.Schema({
   }
 });
 
-export const FlashModel = mongoose.models.Flash || mongoose.model('Flash', FlashSchema);
+export const FlashModel = mongoose.models?.Flash || mongoose.model('Flash', FlashSchema);
