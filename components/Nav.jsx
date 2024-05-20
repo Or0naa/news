@@ -11,6 +11,7 @@ export default function Nav() {
          <NavLink href='/articles'>כל הכתבות</NavLink>
          <NavLink href='/search'>חיפוש</NavLink>
          <NavLink href='/flash'>מבזקים</NavLink>
+         <NavLink href='/newArticle'>כתבה חדשה</NavLink>
          
          
          {/* <Search/> */}
