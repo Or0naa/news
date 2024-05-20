@@ -10,8 +10,8 @@ const ArticleSchema = new mongoose.Schema({
     required: true,
   },
   content: {
-    type: [String],
-    required: true
+    type: String, // or [String] if content is an array
+    required: true,
   },
   editor: {
     type: String,
@@ -20,39 +20,40 @@ const ArticleSchema = new mongoose.Schema({
   date: {
     type: Date,
     required: true,
-    default: Date.now
+    default: Date.now,
   },
   quote: {
     type: String,
-    required: true
+    required: true,
   },
   image: {
     type: String,
-    required: true
+    required: true,
   },
   tags: {
     type: [String],
-    required: true
+    required: true,
   },
-  comments: [{
-    author: {
-      type: String,
-      required: true,
+  comments: [
+    {
+      author: {
+        type: String,
+        required: true,
+      },
+      content: {
+        type: String,
+        required: true,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
     },
-    content: {
-      type: String,
-      required: true,
-    },
-    date: {
-      type: Date,
-      default: Date.now,
-    }
-  }],
+  ],
   isActive: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 export const ArticleModel = mongoose.models?.Article || mongoose.model('Article', ArticleSchema);
-
