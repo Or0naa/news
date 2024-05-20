@@ -36,6 +36,7 @@ export default function NewArticle() {
     e.preventDefault();
     try {
       await connectToMongo();
+      console.log(formData);
       const response = await createArticle(formData);
       console.log(response);
       localStorage.removeItem('newArticleFormData');

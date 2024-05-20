@@ -1,9 +1,10 @@
-import { Poppins,Fredoka } from "next/font/google";
+import { Poppins, Fredoka } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
-const fredoke = Fredoka({ subsets: ["latin"], weight: [ "300", "400", "500", "600", "700"] });
+const fredoke = Fredoka({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
 const inter = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
 export const metadata = {
   title: "news",
@@ -13,11 +14,29 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={fredoke.className}>
+      <body className={`${fredoke.className} flex flex-col min-h-screen bg-theme-bg`}>
         <Nav />
-        {children}
-        <Footer/>
-        </body>
+        <main  className="flex-grow">
+          {children}</main>
+        <Footer />
+        <div id="nagishli-container" className="flex items-center">
+          <Script id="nagishli-config" strategy="beforeInteractive">
+            {`
+            nagishli_config = {
+              color: "blue",
+              language: "he"
+            };
+          `}
+          </Script>
+          <Script
+            src="/nagishli_beta.js?v=3.0b"
+            charset="utf-8"
+            strategy="beforeInteractive"
+            defer
+          />
+        </div>
+      </body>
+
     </html>
   );
 }
