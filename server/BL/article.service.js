@@ -1,5 +1,5 @@
 import { ArticleModel } from "@/server/DL/article.model";
-import { createArticleService } from "@/server/DL/controllers/article.controller";
+import { createNewArticle } from "@/server/DL/controllers/article.controller";
 
 export const getAllArticles = async () => {
   return await ArticleModel.find();
@@ -13,5 +13,5 @@ export const createArticle = async (article) => {
   if (!article.title || !article.content || !article.editor) {
     throw new Error("Please fill all the fields");
   }
-  return await createArticleService(article);
+  return await createNewArticle(article);
 };
