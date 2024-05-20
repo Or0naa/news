@@ -2,6 +2,7 @@
 import { createArticle } from '@/server/BL/article.service'
 import { connectToMongo } from '@/server/DL/connectToMongo'
 import React, { useState, useEffect } from 'react';
+import style from './style.module.css'
 
 
 export default function NewArticle() {
@@ -45,7 +46,7 @@ export default function NewArticle() {
 
   return (
     <div className="max-w-lg mx-auto mt-10 px-4">
-      <h1 className="text-2xl font-bold mb-4">Add New Article</h1>
+      <h1 className={`${style.typing_effect} text-2xl font-bold mb-4`}>Add New Article</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">Title:</label>
