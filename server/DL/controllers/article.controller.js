@@ -4,4 +4,4 @@ import { getAllArticles, createArticle } from "@/server/BL/article.service";
 
 export const getArticles =  () => getAllArticles();
 export const getArticleById =  (id) =>  ArticleModel.findById(id)
-export const createArticleService =  (article) =>  createArticle(article)
+export const createNewArticle =  (article) =>  createArticle(article)

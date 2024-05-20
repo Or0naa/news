@@ -1,9 +1,6 @@
-"use client"
-import { createArticle } from '@/server/BL/article.service'
-import { connectToMongo } from '@/server/DL/connectToMongo'
+'use client';
 import React, { useState, useEffect } from 'react';
-import style from './style.module.css'
-
+import style from './style.module.css';
 
 export default function NewArticle() {
   const [formData, setFormData] = useState({
@@ -35,11 +32,22 @@ export default function NewArticle() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await connectToMongo();
-      console.log(formData);
-      const response = await createArticle(formData);
-      console.log(response);
-      localStorage.removeItem('newArticleFormData');
+      const response = await fetch('/api/articles', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        localStorage.removeItem('newArticleFormData');
+      } else {
+        const errorData = await response.json();
+        console.error('Failed to submit article:', errorData);
+      }
     } catch (error) {
       console.error('Error submitting article:', error);
     }
