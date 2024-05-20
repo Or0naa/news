@@ -19,4 +19,4 @@ const AdSchema = new mongoose.Schema({
     }
   });
   
-  export const AdModel = mongoose.models.Ad || mongoose.model('Ad', AdSchema);
+  export const AdModel = mongoose.models?.Ad || mongoose.model('Ad', AdSchema);
