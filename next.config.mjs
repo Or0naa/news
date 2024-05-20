@@ -15,6 +15,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'www.thecookingfoodie.co.il',
             },
+            {
+                protocol: 'https',
+                hostname: 'upload.wikimedia.org',
+            }
         ],
     },
 }
