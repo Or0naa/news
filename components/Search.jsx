@@ -7,8 +7,11 @@ export default function Search() {
 
    const handleSearch = (e) => {
       e.preventDefault()
-      router.push('/result?search=' + e.target.search.value)
+      
+      router.push('/search/results/?query=' + e.target.search.value)
    }
+
+
 
    return (
       <form onSubmit={handleSearch}>

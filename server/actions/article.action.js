@@ -1,12 +1,10 @@
-"use server";
 
+"use server";
 import { revalidatePath } from "next/cache";
 import { createArticleService, updateCommentService } from "@/server/BL/article.service";
 import { connectToMongo } from "@/server/DL/connectToMongo";
 import { redirect } from "next/navigation";
 import mongoose from "mongoose";
-
-
 export const createArticleAction = async (fd) => {
     const articleObject = Object.fromEntries(fd)
     let newArticleFromDb = {}
@@ -20,27 +18,18 @@ export const createArticleAction = async (fd) => {
     }
     redirect(`/articles/${newArticleFromDb._id}`)
  }
-
-
  export const updateCommentAction = async (fd) => {
-  const formData = Object.fromEntries(fd);
-  const { articleId, author, content } = formData;
-
-  try {
+   // articleId  = new mongoose.Types.ObjectId(articleId)
+   let updatedArticle = {}
+   try {
+    const commentData = Object.fromEntries(fd);
+    console.log(commentData);
     await connectToMongo();
-    const commentData = {
-      author,
-      content,
-    };
-
-    // Convert the articleId string to a valid MongoDB ObjectId
-    const objectId = new mongoose.Types.ObjectId(articleId);
-
-    const updatedArticle = await updateCommentService(objectId, commentData);
+   updatedArticle = await updateCommentService(commentData.pid, commentData);
     revalidatePath(`/articles/${updatedArticle._id}`);
-    redirect(`/articles/${updatedArticle._id}`);
   } catch (error) {
-    console.error("Error adding comment:", error);
+    console.error("Error adding comment:", error.message);
     return { message: 'Error adding comment' };
   }
+  redirect(`/articles/${updatedArticle._id}`);
 }
