@@ -1,21 +1,17 @@
-// app/api/articles/route.js
 import { NextResponse } from 'next/server';
+import { createArticleService } from '@/server/BL/article.service';
 import { connectToMongo } from '@/server/DL/connectToMongo';
-import { createArticle } from '@/server/BL/article.service';
 
-export const GET = async() => {
-   return NextResponse.json({success: true})
-}
+export const POST = async (req) => {
+  const fd = new URLSearchParams(await req.text());
+  const articleData = Object.fromEntries(fd.entries());
 
-
-export async function POST(req) {
   try {
-    const body = await req.json();
     await connectToMongo();
-    const article = await createArticle(body);
-    return NextResponse.json({ success: true, article }, { status: 201 });
+    const newArticleFromDb = await createArticleService(articleData);
+    return NextResponse.redirect(`/article/${newArticleFromDb._id}`);
   } catch (error) {
     console.error('Error creating article:', error);
-    return NextResponse.json({ error: 'Error creating article' }, { status: 500 });
+    return NextResponse.json({ message: 'Error creating article' }, { status: 500 });
   }
-}
+};
