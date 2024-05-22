@@ -11,7 +11,7 @@ export const getNotYetPublishedArticles = async () => {
 };
 
 export const getArticleById = async (id) => {
-  return await ArticleModel.findById(id);
+  return await ArticleModel.findById({_id:id});
 };
 
 
@@ -35,7 +35,8 @@ export const createArticleService = async (data) => {
 
 
 export const updateCommentService = async (articleId, commentData) => {
-const article = getArticleById(articleId)  
+const article = getArticleById(articleId)
+console.log('article', article.data)
   if (!article) {
     throw new Error("Article not found");
   }
@@ -54,8 +55,9 @@ let newComment = {
     date: new Date(),
   };
 
-   article.comments={...article.comments, newComment}
-   await article.save()
+  article.comments = {...article.comments, newComment}
+
+  await article.save();
   return article;
 };
 
