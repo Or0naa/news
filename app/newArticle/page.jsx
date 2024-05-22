@@ -32,11 +32,8 @@ export default function NewArticle() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/articles', {
+      const response = await fetch(`/api/articles`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(formData),
       });
 
@@ -52,6 +49,7 @@ export default function NewArticle() {
       console.error('Error submitting article:', error);
     }
   };
+
 
   return (
     <div className="max-w-lg mx-auto mt-10 px-4">
@@ -90,3 +88,4 @@ export default function NewArticle() {
     </div>
   );
 }
+
