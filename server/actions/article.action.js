@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createArticleService } from "@/server/BL/article.service";
+import { createArticleService, updateCommentService } from "@/server/BL/article.service";
 import { connectToMongo } from "@/server/DL/connectToMongo";
 import { redirect } from "next/navigation";
 
@@ -19,3 +19,19 @@ export const createArticleAction = async (fd) => {
     }
     redirect(`/articles/${newArticleFromDb._id}`)
  }
+
+
+ export const updateCommentAction = async (fd) => {
+   const formData = Object.fromEntries(fd);
+   const { articleId, commentId, author, content } = formData;
+ 
+   try {
+     await connectToMongo();
+     const updatedArticle = await updateCommentService(articleId, commentId, { author, content });
+     revalidatePath(`/articles/${updatedArticle._id}`);
+     redirect(`/articles/${updatedArticle._id}`);
+   } catch (error) {
+     console.error("Error updating comment:", error);
+     return { message: 'Error updating comment' };
+   }
+ };

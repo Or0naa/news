@@ -28,6 +28,22 @@ export const createArticleService = async (data) => {
   return await newArticle.save();
 };
 
-export async function updateArticle(id, data) {
-  return await ArticleModel.findByIdAndUpdate(id, data, { new: true });
-}
+
+
+export const updateCommentService = async (articleId, commentId, commentData) => {
+  if (!articleId || !commentId || !commentData.author || !commentData.content) {
+    throw new Error("Missing required fields");
+  }
+
+  const article = await ArticleModel.findById(articleId);
+  if (!article) {
+    throw new Error("Article not found");
+  }
+
+  comment.author = commentData.author;
+  comment.content = commentData.content;
+  comment.date = new Date();
+
+  await article.save();
+  return article;
+};
