@@ -12,6 +12,8 @@ export default async function FlashNav() {
   }
 
   return (
+    <>
    <FlashNavContent flashes={flashes} />
-  );
+ </> 
+ );
 }
