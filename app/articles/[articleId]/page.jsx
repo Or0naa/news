@@ -7,7 +7,7 @@ import style from './style.module.css';
 export default async function Article({ params }) {
   await connectToMongo();
   const article = await getArticleById(params.articleId);
-  console.log("article", article._id.toString());
+  console.log("articleid", article._id);
 
   return (
     <div>

@@ -14,6 +14,7 @@ export const getNotYetPublishedArticles = async () => {
 };
 export const getArticleById = async (id) => {
   return await ArticleModel.findById({_id:id});
+  return await ArticleModel.findById({_id:id});
 };
 export const createArticleService = async (data) => {
   if (!data.title || !data.content || !data.editor) {
