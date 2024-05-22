@@ -7,6 +7,7 @@ export default function AddComment({ articleId }) {
     const [commentData, setCommentData] = useState({
         author: '',
         content: '',
+        articleId: articleId
     });
 
     const handleChange = (e) => {
@@ -16,7 +17,7 @@ export default function AddComment({ articleId }) {
     return (
         <div className="flex gap-4" >
             <div>
-            תגובה חדשה:
+                Add a new comment:
             </div>
             <form action={updateCommentAction} className="flex flex-col bg-theme-bg gap-2" >
                 <input type="text" placeholder="שם" name="author" className="w-40" />
@@ -24,6 +25,5 @@ export default function AddComment({ articleId }) {
                 <button type="submit" >שליחה</button>
             </form>
         </div>
-
     )
 }
