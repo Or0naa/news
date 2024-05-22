@@ -35,25 +35,27 @@ export const createArticleService = async (data) => {
 
 
 export const updateCommentService = async (articleId, commentData) => {
-  if (!commentData.author || !commentData.content) {
-    throw new Error("Missing required fields");
-  }
-
-  const article = getArticleById(articleId).toString();
-
-console.log("id:", articleId);
+const article = getArticleById(articleId)  
   if (!article) {
     throw new Error("Article not found");
   }
+if (!commentData.author || !commentData.content) {
+    throw new Error("Missing required fields");
+  }
 
 
-  article.comments.push({
+
+console.log("id:", articleId);
+// console.log("id2:", article)
+
+let newComment = {
     author: commentData.author,
     content: commentData.content,
     date: new Date(),
-  });
+  };
 
-  await article.save();
+   article.comments={...article.comments, newComment}
+   await article.save()
   return article;
 };
 
