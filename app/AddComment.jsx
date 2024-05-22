@@ -16,7 +16,7 @@ export default function AddComment({ articleId }) {
     return (
         <div className="flex gap-4" >
             <div>
-                Add a new comment:
+            תגובה חדשה:
             </div>
             <form action={updateCommentAction} className="flex flex-col bg-theme-bg gap-2" >
                 <input type="text" placeholder="שם" name="author" className="w-40" />
