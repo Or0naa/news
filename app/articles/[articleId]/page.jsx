@@ -2,6 +2,7 @@ import React from 'react'
 import { connectToMongo } from '@/server/DL/connectToMongo';
 import { getArticleById } from '@/server/BL/article.service';
 import AddComment from '@/app/addComment';
+import style from './style.module.css';
 
 export default async function Article({ params }) {
   await connectToMongo();
@@ -21,7 +22,7 @@ export default async function Article({ params }) {
             <p className="text-lg text-theme-dark">{article.subtitle}</p>
             <div className='text-sm'>מאת {article.editor} בתאריך {new Date(article.date).toLocaleDateString()}</div>
             <div>
-              <div className='ml-16 mt-4 mb-4' dangerouslySetInnerHTML={{ __html: article.content }} />
+              <div className={`${style.articleStyle} ml-16 mt-4 mb-4`} dangerouslySetInnerHTML={{ __html: article.content }} />
               <div>
                 <ul className="flex flex-wrap">
                   {article.tags.map(tag => (

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function About() {
@@ -24,7 +25,7 @@ export default function About() {
                 </div>
                 <div class="text-center">
                     <img width={80} src="https://www.ikea.com/il/he/images/products/lilleplutt-soft-toy-cat-grey-white__0876952_pe611260_s5.jpg?f=s" alt="החתול הדובון" class="rounded-full mb-2" />
-                    <p class="text-sm">החתול יוסף</p>
+                    <Link href="/admin" class="text-sm cursor-none">החתול יוסף</Link>
                 </div>
             </div>
             <p class="text-lg mb-4">

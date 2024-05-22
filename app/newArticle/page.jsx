@@ -31,38 +31,38 @@ export default function NewArticle() {
   }, [formData]);
 
   return (
-    <div className="max-w-lg mx-auto mt-10 px-4">
-      <h1 className={`${style.typing_effect} text-2xl font-bold mb-4`}>Add New Article</h1>
+    <div dir="rtl" className="max-w-lg mx-auto mt-10 px-4">
+      <h1  className={`${style.typing_effect} text-2xl font-bold mb-4`}>הוספת כתבה חדשה</h1>
       <form action={createArticleAction}  className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Title:</label>
-          <input type="text" name="title" value={formData.title} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+          <label className="block text-sm font-medium text-gray-700">כותרת:</label>
+          <input type="text" required name="title" value={formData.title} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Subtitle:</label>
-          <input type="text" name="subtitle" value={formData.subtitle} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+          <label className="block text-sm font-medium text-gray-700">כותרת משנה:</label>
+          <input type="text" required name="subtitle" value={formData.subtitle} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Content:</label>
-          <textarea name="content" value={formData.content} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+          <label className="block text-sm font-medium text-gray-700">תוכן:</label>
+          <textarea name="content" required value={formData.content} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full resize-none" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Editor:</label>
-          <input type="text" name="editor" value={formData.editor} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+          <label className="block text-sm font-medium text-gray-700">שם הכותב/ת:</label>
+          <input type="text" required name="editor" value={formData.editor} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Quote:</label>
-          <input type="text" name="quote" value={formData.quote} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+          <label className="block text-sm font-medium text-gray-700">תיאור קצר לתמונה:</label>
+          <input type="text" required name="quote" value={formData.quote} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Image URL:</label>
-          <input type="text" name="image" value={formData.image} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+          <label className="block text-sm font-medium text-gray-700">קישור לתמונה מהאינטרנט:</label>
+          <input type="text" required name="image" value={formData.image} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Tags (comma separated):</label>
-          <input type="text" name="tags" value={formData.tags} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+          <label className="block text-sm font-medium text-gray-700">תגיות (פסיק מפריד):</label>
+          <input type="text" required name="tags" value={formData.tags} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
         </div>
-        <button type="submit" className="bg-theme-dark hover:shadow-inner hover:text-theme-accent hover:shadow-theme-accent text-white py-2 px-4 rounded">Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

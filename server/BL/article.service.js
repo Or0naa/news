@@ -5,6 +5,10 @@ export const getAllArticles = async () => {
   return await ArticleModel.find();
 };
 
+export const getNotYetPublishedArticles = async () => {
+  return await ArticleModel.find({ isActive: false });
+};
+
 export const getArticleById = async (id) => {
   return await ArticleModel.findById(id);
 };

@@ -1,0 +1,8 @@
+.articleStyle::first-letter {
+    initial-letter: 2;
+    color: #141E46;
+    font-weight: bold;
+    margin-left: .45em;
+    margin-top: -5px;
+    text-shadow:  5px 5px #41b06dae;
+ }
