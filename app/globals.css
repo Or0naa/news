@@ -8,6 +8,10 @@ body{
     font-family: "Fredoka", system-ui ,sans-serif;
 }
 
+button {
+  @apply text-theme-accent bg-theme-dark border-theme-light border-2 hover:text-theme-bg p-1 w-16 rounded-xl;
+}
+
 @keyframes fadeInUp {
     from {
       opacity: 0;
