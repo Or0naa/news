@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import { createArticleService, updateCommentService } from "@/server/BL/article.service";
 import { connectToMongo } from "@/server/DL/connectToMongo";
 import { redirect } from "next/navigation";
-import mongoose from "mongoose";
 
 
 export const createArticleAction = async (fd) => {
@@ -23,7 +22,7 @@ export const createArticleAction = async (fd) => {
 
 
  export const updateCommentAction = async (fd) => {
-   // articleId  = new mongoose.Types.ObjectId(articleId)
+
    let updatedArticle = {}
    
    try {

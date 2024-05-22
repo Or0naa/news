@@ -10,10 +10,7 @@ export default function AddComment({ articleId }) {
         articleId: articleId
     });
 
-    const handleChange = (e) => {
-        setCommentData({ ...commentData, [e.target.name]: e.target.value });
-    }
-    console.log({articleId});
+
 
     return (
         <div className="flex gap-4" >

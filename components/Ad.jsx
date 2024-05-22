@@ -9,7 +9,7 @@ export default async function Ad() {
 
   return (
     <Link href={randomAd.link} target='_blank'>
-      <div dir="auto" className="flex gap-4 items-center justify-center p-4 rounded-xl hover:shadow-theme-light hover:shadow-lg">
+      <div dir="auto" className="flex gap-4 items-center justify-center p-4 rounded-xl ">
         <img className='h-52 max-w-96 object-cover rounded-lg' src={randomAd.image} alt="randomAd" />
         <div className="text-gray-800 flex flex-col">
           <div className="text-xl font-bold text-center mb-2">{randomAd.title}</div>
