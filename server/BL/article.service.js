@@ -35,8 +35,8 @@ export const createArticleService = async (data) => {
 
 
 export const updateCommentService = async (articleId, commentData) => {
-const article = getArticleById(articleId)
-console.log('article', article.data)
+const article = await getArticleById(articleId)
+
   if (!article) {
     throw new Error("Article not found");
   }
@@ -50,12 +50,12 @@ console.log("id:", articleId);
 // console.log("id2:", article)
 
 let newComment = {
-    author: commentData.author,
+  author: commentData.author,
     content: commentData.content,
     date: new Date(),
   };
 
-  article.comments = {...article.comments, newComment}
+  article.comments = [...article.comments, newComment]
 
   await article.save();
   return article;
