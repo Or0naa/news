@@ -36,7 +36,7 @@ export default async function Article({ params }) {
                   </div>
                 ))}
                 <div className="border-t pt-4 mt-4 border-theme-dark">
-                  <AddComment /></div>
+                  <AddComment articleId={}/></div>
               </div>
             </div>
           </div>
