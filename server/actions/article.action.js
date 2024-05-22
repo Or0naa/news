@@ -24,8 +24,8 @@ export const createArticleAction = async (fd) => {
 
  export const updateCommentAction = async (fd, articleId) => {
   const commentData = Object.fromEntries(fd);
-
-let updatedArticle = {}
+articleId  = new mongoose.Types.ObjectId(articleId)
+// let updatedArticle = {}
 
   try {
     await connectToMongo();
