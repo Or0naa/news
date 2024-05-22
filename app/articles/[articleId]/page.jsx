@@ -1,7 +1,7 @@
 import React from 'react'
 import { connectToMongo } from '@/server/DL/connectToMongo';
 import { getArticleById } from '@/server/BL/article.service';
-import AddComment from '@/app/addComment';
+import AddComment from '@/components/AddComment';
 import style from './style.module.css';
 
 export default async function Article({ params }) {

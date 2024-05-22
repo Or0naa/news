@@ -1,6 +1,10 @@
-import { FlashModel } from "../flash.model";
-import { getAllFlashes, createFlash } from "@/server/BL/flash.service";
 
-export const getFlashes =  () => getAllFlashes();
+import { FlashModel } from "@/server/DL/flash.model";
+
+export const getFlashes = async  () => await FlashModel.find() 
+
 export const getFlashById =  (id) =>  FlashModel.findById(id)
-export const createFlashService =  (flash) =>  createFlash(flash)
+
+export const createFlash = (data) => FlashModel.create(data)
+
+export const updateFlash = (id, data) => FlashModel.findByIdAndUpdate(id, data)
