@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createArticleService } from '@/server/BL/article.service';
+import { createArticleService, updateCommentService } from '@/server/BL/article.service';
 import { connectToMongo } from '@/server/DL/connectToMongo';
 
 export const POST = async (req) => {
@@ -13,5 +13,19 @@ export const POST = async (req) => {
   } catch (error) {
     console.error('Error creating article:', error);
     return NextResponse.json({ message: 'Error creating article' }, { status: 500 });
+  }
+};
+
+export const PUT = async (req) => {
+  const fd = new URLSearchParams(await req.text());
+  const commentData = Object.fromEntries(fd.entries());
+
+  try {
+    await connectToMongo();
+    const updatedArticle = await updateCommentService(commentData);
+    return NextResponse.json(updatedArticle);
+  } catch (error) {
+    console.error('Error updating comment:', error);
+    return NextResponse.json({ message: 'Error updating comment' }, { status: 500 });
   }
 };
