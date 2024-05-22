@@ -1,6 +1,7 @@
 import React from 'react'
 import { connectToMongo } from '@/server/DL/connectToMongo';
 import { getArticleById } from '@/server/BL/article.service';
+import AddComment from '@/app/addComment';
 
 export default async function Article({ params }) {
   await connectToMongo();
@@ -9,9 +10,9 @@ export default async function Article({ params }) {
   return (
     <div>
       {article ? (
-        
+
         <div dir="auto" className="flex flex-col md:flex-row-reverse bg-theme-bg p-8">
-               <div className='flex flex-col md:w-1/3 md:mt-0 md:ml-8'>
+          <div className='flex flex-col md:w-1/3 md:mt-0 md:ml-8'>
             <img src={article.image} className='object-contain rounded-md h-64 md:h-auto order-first md:order-none' alt={article.title} />
             <div className='text-theme-dark'>{article.quote}</div>
           </div>
@@ -33,10 +34,12 @@ export default async function Article({ params }) {
                     <p>{comment.content}</p>
                   </div>
                 ))}
+                <div className="border-t pt-4 mt-4 border-theme-dark">
+                  <AddComment /></div>
               </div>
             </div>
           </div>
-     
+
         </div>
       ) : (
         <p>Article not found</p>
