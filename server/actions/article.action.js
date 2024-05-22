@@ -22,18 +22,19 @@ export const createArticleAction = async (fd) => {
  }
 
 
- export const updateCommentAction = async (fd, articleId) => {
-  const commentData = Object.fromEntries(fd);
-articleId  = new mongoose.Types.ObjectId(articleId)
-// let updatedArticle = {}
-
-  try {
+ export const updateCommentAction = async (fd) => {
+   // articleId  = new mongoose.Types.ObjectId(articleId)
+   let updatedArticle = {}
+   
+   try {
+    const commentData = Object.fromEntries(fd);
+    console.log(commentData);
     await connectToMongo();
-   updatedArticle = await updateCommentService(articleId, commentData);
+   updatedArticle = await updateCommentService(commentData.pid, commentData);
     revalidatePath(`/articles/${updatedArticle._id}`);
   
   } catch (error) {
-    console.error("Error adding comment:", error);
+    console.error("Error adding comment:", error.message);
     return { message: 'Error adding comment' };
   }  
   redirect(`/articles/${updatedArticle._id}`);
