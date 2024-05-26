@@ -8,7 +8,7 @@ export default async function AllArticles() {
 
   const articles = await getAllArticles();
   return (
-    <div className="bg-theme-bg py-8">
+    <div className="bg-theme-bg py-4">
       <div className="max-w-5xl mx-auto px-4">
         <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (
