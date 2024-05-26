@@ -10,8 +10,6 @@ export default function AddComment({ articleId }) {
         articleId: articleId
     });
 
-
-
     return (
         <div className="flex gap-4" >
             <div>
