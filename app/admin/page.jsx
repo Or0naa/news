@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { getNotYetPublishedArticles, getAllArticles } from '@/server/BL/article.service'
 import { connectToMongo } from '@/server/DL/connectToMongo'
@@ -6,6 +8,19 @@ export default async function Admin() {
   await connectToMongo()
   const articles = await getNotYetPublishedArticles()
   console.log("articles", articles)
+  const handleApprove = async (e) => {
+    e.preventDefault()
+    const article = await getAllArticles()
+    console.log(article)
+  }
+
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    const article = await getAllArticles()
+    console.log(article)
+  }
+
+
 
 
   return (
@@ -33,10 +48,10 @@ export default async function Admin() {
             <div className='flex gap-4'>
 
               <form action="">
-                < button > אישור</button>
+                < button onClick={handleApprove}> אישור</button>
               </form>
               <form action="">
-                < button> מחיקה</button>
+                < button onClick={handleDelete}> מחיקה</button>
               </form>
             </div>
 
