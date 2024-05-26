@@ -1,5 +1,4 @@
 import { ArticleModel } from "@/server/DL/article.model";
-import { createNewArticle } from "@/server/DL/controllers/article.controller";
 export const getAllArticles = async () => {
   return await ArticleModel.find();
 };
@@ -13,7 +12,6 @@ export const getNotYetPublishedArticles = async () => {
   return await ArticleModel.find({ isActive: false });
 };
 export const getArticleById = async (id) => {
-  return await ArticleModel.findById({_id:id});
   return await ArticleModel.findById({_id:id});
 };
 export const createArticleService = async (data) => {
