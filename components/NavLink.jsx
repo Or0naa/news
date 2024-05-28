@@ -7,7 +7,7 @@ const NavLink = ({ href, children }) => {
    const path = usePathname()
 
    return (
-      <Link href={href} className={`${path===href? "text-theme-light":"text-theme-dark"}`}>
+      <Link href={href} className={`${path===href ? "text-theme-light":"text-theme-dark"}`}>
          {children}
       </Link>
    )
