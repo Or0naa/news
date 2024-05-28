@@ -1,6 +1,4 @@
 import NavLink from './NavLink'
-import Search from './Search'
-
 export default function Nav() {
 
    return (
@@ -15,8 +13,7 @@ export default function Nav() {
          <NavLink href='/newArticle'>כתבה חדשה</NavLink>
          <NavLink href='/newFlash'>מבזק חדש</NavLink>
          </div>
-         
-         {/* <Search/> */}
+
       </div>
    )
 }
