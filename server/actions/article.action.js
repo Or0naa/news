@@ -41,3 +41,27 @@ export const updateCommentAction = async (fd) => {
   redirect(`/articles/${updatedArticle._id}`);
 }
 
+
+export const updateArticleStatus = async (data) => {
+  const { id, action } = Object.fromEntries(data);
+  await connectToMongo();
+
+  try {
+    if (action === "approve") {
+      await ArticleModel.findByIdAndUpdate(id, { isActive: true });
+    } else if (action === "delete") {
+      await ArticleModel.findByIdAndDelete(id);
+    }
+    revalidatePath(`/admin`); // Revalidate the admin page after update
+  } catch (error) {
+    console.error("Error updating article status:", error.message);
+    return { error: `Failed to ${action} article` };
+  }
+
+  return { message: `Article ${action}d successfully` };
+};
+
+export const handleStatusUpdate = async (formData) => {
+  const result = await updateArticleStatus(formData);
+  return result;
+};

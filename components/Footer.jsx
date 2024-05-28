@@ -13,7 +13,7 @@ export default async function Footer() {
     month: 'long',
     day: 'numeric'
   });
-  // console.log(data)
+
 
   return (
     <div dir="rtl" className="flex items-center justify-center gap-4 bg-theme-bg p-4">

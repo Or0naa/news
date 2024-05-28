@@ -1,6 +1,6 @@
 
 import { ArticleModel } from "../article.model";
-import { getAllArticles, createArticleServer, updateArticle, getArticles } from "@/server/BL/article.service";
+import { getAllArticles, createArticleService, updateArticle } from "@/server/BL/article.service";
 
 // export const getArticles =  (filter={}) => getAllArticles();
 export const searchArticles = async (query) => await getArticles({ $text: { $search: query } });

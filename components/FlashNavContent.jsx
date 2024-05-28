@@ -9,7 +9,7 @@ export default function FlashNavContent({ flashes }) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setIndex((prevIndex) => {
-        const newIndex = (prevIndex + 1) % flashes.length;
+        const newIndex = (prevIndex + 4) % flashes.length;
         setCurrentFlashes(flashes.slice(newIndex, newIndex + 4));
         return newIndex;
       });
