@@ -5,5 +5,5 @@ import { getAllArticles, createArticleService, updateArticle } from "@/server/BL
 // export const getArticles =  (filter={}) => getAllArticles();
 export const searchArticles = async (query) => await getArticles({ $text: { $search: query } });
 export const getArticleById =  (id) =>  ArticleModel.findById(id)
-export const createNewArticle =  (article) =>  createArticleServer(article)
+export const createNewArticle =  (article) =>  createArticleService(article)
 export const updateArticleById =  (id, article) =>  updateArticle(id, article)
